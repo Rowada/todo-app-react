@@ -8,16 +8,11 @@ const ThemeProvider = (props) => {
   const [darkMode, setDarkMode] = useState(false);
 
   const theme = useStore((state) => state.theme);
+  const toggleTheme = useStore((state) => state.toggleTheme);
 
   useEffect(() => {
     setDarkMode(theme === "dark");
   }, [theme]);
-
-  const toggleTheme = () => {
-    useStore.setState((state) => ({
-      theme: state.theme === "dark" ? "light" : "dark",
-    }));
-  };
 
   useEffect(() => {
     if (darkMode) {
