@@ -6,14 +6,13 @@ import sun from "../../assets/images/icon-sun.svg";
 import moon from "../../assets/images/icon-moon.svg";
 
 const ToggleTheme = () => {
-  // Correction: supprimez "export const"
   const { toggleTheme, darkMode } = useContext(ThemeContext);
 
   return (
-    <button onClick={toggleTheme} className="w-20 h-20">
-      <img src={darkMode ? sun : moon} alt="toggle icon" />
+    <button onClick={toggleTheme}>
+      <img className="w-6 h-6" src={darkMode ? sun : moon} alt="toggle icon" />
     </button>
   );
 };
 
-export default ToggleTheme; // Ajoutez l'exportation par défaut
+export default ToggleTheme;
