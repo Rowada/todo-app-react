@@ -10,10 +10,7 @@ const ToggleTheme = () => {
   const { toggleTheme, darkMode } = useContext(ThemeContext);
 
   return (
-    <button
-      onClick={toggleTheme}
-      className="w-20 h-20 bg-accent rounded-md border border-white p-2"
-    >
+    <button onClick={toggleTheme} className="w-20 h-20">
       <img src={darkMode ? sun : moon} alt="toggle icon" />
     </button>
   );
