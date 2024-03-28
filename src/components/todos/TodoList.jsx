@@ -2,6 +2,7 @@ import React from "react";
 import useStore from "../../store";
 import ToggleTheme from "../toggleTheme/ToggleTheme";
 import { useState } from "react";
+import { TodoItem } from "./TodoItem";
 
 export const TodoList = () => {
   const [newTodo, setNewTodo] = useState("");
@@ -45,12 +46,17 @@ export const TodoList = () => {
           </div>
         </div>
       </form>
-
-      <ul>
-        {todos.map((todo) => {
-          return <li key={todo.id}>{todo.text}</li>;
-        })}
-      </ul>
+      <div className="w-full rounded bg-background">
+        <ul>
+          {todos.map((todo, id) => {
+            return (
+              <li key={todo.id}>
+                <TodoItem todo={todo} id={id} />
+              </li>
+            );
+          })}
+        </ul>
+      </div>
     </section>
   );
 };
