@@ -1,9 +1,18 @@
 import React from "react";
 import useStore from "../../store";
 import ToggleTheme from "../toggleTheme/ToggleTheme";
+import { useState } from "react";
 
 export const TodoList = () => {
-  const todos = useStore((state) => state.todos);
+  const [newTodo, setNewTodo] = useState("");
+  const { todos, addTodo } = useStore((state) => state);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    addTodo(newTodo);
+    setNewTodo("");
+  };
 
   return (
     <section className="max-w-[750px] w-full m-auto px-8 relative mt-[-180px]">
@@ -15,7 +24,7 @@ export const TodoList = () => {
         <ToggleTheme />
       </div>
 
-      <form className="mt-10 mb-6">
+      <form onSubmit={handleSubmit} className="mt-10 mb-6">
         <div className="relative">
           <label htmlFor="todos"></label>
 
@@ -25,14 +34,23 @@ export const TodoList = () => {
             </div>
 
             <input
-              className="w-full py-5 rounded ps-12 bg-background placeholder:text-secondary"
+              className="w-full py-5 rounded ps-12 bg-background text-text placeholder:text-secondary focus:outline-none caret-primary"
               type="text"
               id="todos"
+              name="todos"
+              value={newTodo}
+              onChange={(e) => setNewTodo(e.target.value)}
               placeholder="Create a new todo..."
             />
           </div>
         </div>
       </form>
+
+      <ul>
+        {todos.map((todo) => {
+          return <li key={todo.id}>{todo.text}</li>;
+        })}
+      </ul>
     </section>
   );
 };
