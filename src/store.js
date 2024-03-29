@@ -15,9 +15,16 @@ const useStore = create((set) => ({
     })),
   toggleTodo: (index) =>
     set((state) => ({
-      todos: state.todos.map((todo, i) =>
-        i === index ? { ...todo, completed: !todo.completed } : todo
-      ),
+      todos: state.todos.map((todo) => {
+        if (todo.id === index) {
+          return {
+            ...todo,
+            isCompleted: true,
+          };
+        }
+
+        return todo;
+      }),
     })),
 
   removeTodo: (index) =>
