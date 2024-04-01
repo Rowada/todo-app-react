@@ -15,27 +15,15 @@ export const TodoItem = ({ todo, id }) => {
         ></span> */}
 
         <input
+          style={{ "--image-url": `url(${checkIcon})` }}
           type="checkbox"
           id="checkbox"
-          className="peer rounded-full w-5 h-5 appearance-none focus:outline-none border border-secondary checked:bg-secondary hover:ring hover:ring-primary after:content-['']
-          after:w-full
-          after-h-full
-          after:absolute
-          after:left-0
-          after:top-0
-          after:bg-no-repeat
-          after:bg-center
-          after:bg-[lenght:40px]
-
-
-          after:bg-[url('../../assets/images/icon-check.svg')]
-          "
+          className="peer relative rounded-full w-5 h-5 appearance-none focus:outline-none border border-secondary checked:bg-secondary hover:ring hover:ring-primary shrink-0 after:content-[''] after:w-full after:h-full after:absolute after:left-0 after:top-0 after:bg-no-repeat after:bg-center after:bg-[image:var(--image-url)] cursor-pointer"
         />
-
-        <p className="ps-4 peer-checked:line-through peer-checked:text-secondary">
-          {todo.text}
-        </p>
       </div>
+      <p className="ps-4 peer-checked:line-through peer-checked:text-secondary">
+        {todo.text}
+      </p>
 
       <button className="pe-4" onClick={() => removeTodo(id)}>
         <img className="w-4 h-4" src={deleteIcon} alt="delete icon" />
