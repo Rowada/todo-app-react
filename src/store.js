@@ -22,7 +22,6 @@ const useStore = create((set) => ({
             isCompleted: true,
           };
         }
-
         return todo;
       }),
     })),

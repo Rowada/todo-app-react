@@ -48,29 +48,19 @@ export const TodoList = () => {
           </div>
         </div>
       </form>
-      <div className="w-full rounded bg-background">
-        <ul>
-          {todos.map((todo, id) => {
-            return (
-              <li className="relative" key={todo.id}>
-                <TodoItem todo={todo} id={id} />
-              </li>
-            );
-          })}
-        </ul>
-      </div>
-
-      <div className="relative flex  items-center justify-center ">
-        <div className="mx-auto max-w-md">
-          <ul className="shadow-xl">
-            <li className="relative flex w-80 items-center justify-center gap-2.5 border-b-2 bg-white px-3 py-3.5 hover:border-gray-400">
-              <input
-                style={{ "--image-url": `url(${checkIcon})` }}
-                type="checkbox"
-                id="checkbox1"
-                className="peer relative h-5 w-5 shrink-0 appearance-none rounded-sm border after:absolute after:bg-[image:var(--image-url)] after:left-0 after:top-0 after:h-full after:w-full  after:bg-[length:10px] after:bg-center after:bg-no-repeat after:content-[''] checked:bg-gray-500 hover:ring hover:ring-gray-300 focus:outline-none"
-              />
-            </li>
+      <div className="relative">
+        <div>
+          <ul>
+            {todos.map((todo, id) => {
+              return (
+                <div
+                  key={todo.id}
+                  className="w-full gap-2.5 py-5 ps-4 border-b border-accent text-text flex items-center justify-between bg-background rounded-t"
+                >
+                  <TodoItem todo={todo} id={id} />
+                </div>
+              );
+            })}
           </ul>
         </div>
       </div>
