@@ -4,12 +4,20 @@ import ToggleTheme from "../toggleTheme/ToggleTheme";
 import { useState } from "react";
 import { TodoItem } from "./TodoItem";
 
+import emptyTodos from "../../assets/images/empty-todos.svg";
+
 export const TodoList = () => {
   const [newTodo, setNewTodo] = useState("");
   const { todos, addTodo } = useStore((state) => state);
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    if (newTodo.trim() === "") {
+      alert("Please input new todo.");
+
+      return;
+    }
 
     addTodo(newTodo);
     setNewTodo("");
@@ -47,18 +55,30 @@ export const TodoList = () => {
         </div>
       </form>
       <div>
-        <ul>
-          {todos.map((todo) => {
-            return (
-              <div
-                key={todo.id}
-                className="w-full gap-2.5 py-5 ps-4 border-b border-accent text-text flex items-center justify-between bg-background rounded-t"
-              >
-                <TodoItem todo={todo} id={todo.id} />
-              </div>
-            );
-          })}
-        </ul>
+        {todos.length === 0 ? (
+          <div className="w-full bg-background rounded-t flex flex-col items-center justify-center">
+            <img
+              className="w-96 py-5 h-auto"
+              src={emptyTodos}
+              alt="image empty todos"
+            />
+
+            <p className="text-2xl text-text pb-5">No todos yet</p>
+          </div>
+        ) : (
+          <ul>
+            {todos.map((todo) => {
+              return (
+                <div
+                  key={todo.id}
+                  className="w-full gap-2.5 py-5 ps-4 border-b border-accent text-text flex items-center justify-between bg-background rounded-t"
+                >
+                  <TodoItem todo={todo} id={todo.id} />
+                </div>
+              );
+            })}
+          </ul>
+        )}
       </div>
     </section>
   );
