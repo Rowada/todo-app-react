@@ -46,21 +46,19 @@ export const TodoList = () => {
           </div>
         </div>
       </form>
-      <div className="relative">
-        <div>
-          <ul>
-            {todos.map((todo) => {
-              return (
-                <div
-                  key={todo.id}
-                  className="w-full gap-2.5 py-5 ps-4 border-b border-accent text-text flex items-center justify-between bg-background rounded-t"
-                >
-                  <TodoItem todo={todo} id={todo.id} />
-                </div>
-              );
-            })}
-          </ul>
-        </div>
+      <div>
+        <ul>
+          {todos.map((todo) => {
+            return (
+              <div
+                key={todo.id}
+                className="w-full gap-2.5 py-5 ps-4 border-b border-accent text-text flex items-center justify-between bg-background rounded-t"
+              >
+                <TodoItem todo={todo} id={todo.id} />
+              </div>
+            );
+          })}
+        </ul>
       </div>
     </section>
   );

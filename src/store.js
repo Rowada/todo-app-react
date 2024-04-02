@@ -37,9 +37,9 @@ const useStore = create((set) => {
         return { todos: updatedTodos };
       }),
 
-    removeTodo: (index) =>
+    removeTodo: (id) =>
       set((state) => {
-        const updatedTodos = state.todos.filter((_, i) => i !== index);
+        const updatedTodos = state.todos.filter((todo) => todo.id !== id);
 
         localStorage.setItem("todos", JSON.stringify(updatedTodos));
         return { todos: updatedTodos };
