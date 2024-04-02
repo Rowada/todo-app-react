@@ -4,8 +4,6 @@ import ToggleTheme from "../toggleTheme/ToggleTheme";
 import { useState } from "react";
 import { TodoItem } from "./TodoItem";
 
-import checkIcon from "../../assets/images/icon-check.svg";
-
 export const TodoList = () => {
   const [newTodo, setNewTodo] = useState("");
   const { todos, addTodo } = useStore((state) => state);
@@ -51,13 +49,13 @@ export const TodoList = () => {
       <div className="relative">
         <div>
           <ul>
-            {todos.map((todo, id) => {
+            {todos.map((todo) => {
               return (
                 <div
                   key={todo.id}
                   className="w-full gap-2.5 py-5 ps-4 border-b border-accent text-text flex items-center justify-between bg-background rounded-t"
                 >
-                  <TodoItem todo={todo} id={id} />
+                  <TodoItem todo={todo} id={todo.id} />
                 </div>
               );
             })}
