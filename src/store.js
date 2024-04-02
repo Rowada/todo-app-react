@@ -1,4 +1,5 @@
 import { create } from "zustand";
+import { nanoid } from "nanoid";
 
 const useStore = create((set) => ({
   todos: [],
@@ -8,7 +9,7 @@ const useStore = create((set) => ({
         ...state.todos,
         {
           text: todo,
-          id: Date.now(),
+          id: nanoid(),
           isCompleted: false,
         },
       ],
