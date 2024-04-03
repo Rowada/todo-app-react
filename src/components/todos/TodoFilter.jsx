@@ -1,11 +1,32 @@
 import React from "react";
 
-const TodoFilter = ({ setFilter }) => {
+const TodoFilter = ({ filter, setFilter }) => {
   return (
     <div className="flex gap-3.5">
-      <button onClick={() => setFilter("all")}>All</button>
-      <button onClick={() => setFilter("active")}>Active</button>
-      <button onClick={() => setFilter("completed")}>Completed</button>
+      <button
+        className={`focus-outline:none ${
+          filter === "all" ? "text-primary" : "text-secondary"
+        } hover:text-text`}
+        onClick={() => setFilter("all")}
+      >
+        All
+      </button>
+      <button
+        className={`focus-outline:none ${
+          filter === "active" ? "text-primary" : "text-secondary"
+        } hover:text-text`}
+        onClick={() => setFilter("active")}
+      >
+        Active
+      </button>
+      <button
+        className={`focus-outline:none ${
+          filter === "completed" ? "text-primary" : "text-secondary"
+        } hover:text-text`}
+        onClick={() => setFilter("completed")}
+      >
+        Completed
+      </button>
     </div>
   );
 };

@@ -5,6 +5,7 @@ import { useState } from "react";
 import { TodoItem } from "./TodoItem";
 import TodoFilter from "./TodoFilter";
 import emptyTodos from "../../assets/images/empty-todos.svg";
+import { TodoClearButton } from "./TodoClearButton";
 
 export const TodoList = () => {
   const [newTodo, setNewTodo] = useState("");
@@ -20,6 +21,10 @@ export const TodoList = () => {
     }
     return true;
   });
+
+  const activeTodosLength = filteredTodos.filter(
+    (todo) => !todo.isCompleted
+  ).length;
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -92,10 +97,10 @@ export const TodoList = () => {
         )}
       </div>
 
-      <div className="text-sm w-full flex items-center justify-between bg-background py-5 px-4 rounded-b">
-        <span>0 items left</span>
-        <TodoFilter setFilter={setFilter} />
-        <p>Clear Completed</p>
+      <div className="text-sm text-secondary font-semibold w-full flex items-center justify-between bg-background py-5 px-4 rounded-b">
+        <span>{activeTodosLength} items left</span>
+        <TodoFilter filter={filter} setFilter={setFilter} />
+        <TodoClearButton />
       </div>
     </section>
   );
