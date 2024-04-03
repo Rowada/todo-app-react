@@ -60,6 +60,14 @@ const useStore = create((set) => {
         return { todos: updatedTodos };
       }),
 
+    removeCompletedTodos: () =>
+      set((state) => {
+        const updatedTodos = state.todos.filter((todo) => !todo.isCompleted);
+
+        localStorage.setItem("todos", JSON.stringify(updatedTodos));
+        return { todos: updatedTodos };
+      }),
+
     theme: initialTheme,
     toggleTheme: () =>
       set((state) => {
