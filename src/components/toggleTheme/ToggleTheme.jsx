@@ -10,7 +10,11 @@ const ToggleTheme = () => {
 
   return (
     <button onClick={toggleTheme}>
-      <img className="w-6 h-6" src={darkMode ? sun : moon} alt="toggle icon" />
+      <img
+        className="w-4 h-4 md:w-6 md:h-6"
+        src={darkMode ? sun : moon}
+        alt="toggle icon"
+      />
     </button>
   );
 };

@@ -2,8 +2,10 @@ import React from "react";
 
 export const Footer = () => {
   return (
-    <footer className="max-w-[750px] w-full m-auto flex flex-col items-center justify-center gap-5 my-5">
-      <p className="text-secondary">Drag and drop to reorder list</p>
+    <footer className="max-w-[750px] w-full m-auto flex flex-col items-center justify-center gap-5 my-8">
+      <p className="text-secondary text-sm md:text-base">
+        Drag and drop to reorder list
+      </p>
 
       <nav className="text-xs text-text">
         <ul className="flex gap-2">
