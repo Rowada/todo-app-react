@@ -1,4 +1,5 @@
-import React from "react";
+// @ts-nocheck
+
 import useStore from "../../store";
 import ToggleTheme from "../toggleTheme/ToggleTheme";
 import { useState, useEffect } from "react";
@@ -52,9 +53,9 @@ export const TodoList = () => {
   };
 
   return (
-    <section className="max-w-[750px] w-full m-auto px-8 relative mt-[-180px]">
+    <section className="w-full m-auto px-8 relative mt-headm sm:max-w-550 lg:max-w-750">
       <div className="w-full flex items-center justify-between">
-        <h1 className="text-2xl md:text-4xl uppercase tracking-[.80rem] font-semibold text-white">
+        <h1 className="text-2xl sm:text-3xl md:text-4xl uppercase tracking-hightWidest font-semibold text-white">
           todo
         </h1>
 
@@ -86,7 +87,7 @@ export const TodoList = () => {
         {filteredTodos.length === 0 ? (
           <div className="w-full bg-background rounded-t flex flex-col items-center justify-center">
             <img
-              className="w-52 md:w-96 py-5 h-auto object-cover"
+              className="w-52 sm:w-80 lg:w-96 py-5 h-auto object-cover"
               src={emptyTodos}
               alt="image empty todos"
             />
@@ -109,7 +110,7 @@ export const TodoList = () => {
         )}
       </div>
 
-      {width < 600 ? (
+      {width < 765 ? (
         <>
           <div className="text-xs text-secondary font-semibold w-full flex items-center justify-between bg-background py-4 md:py-5 px-4 rounded-b">
             <span>{activeTodosLength} items left</span>

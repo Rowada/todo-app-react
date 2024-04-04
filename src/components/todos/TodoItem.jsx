@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 // @ts-nocheck
 import useStore from "../../store";
 import deleteIcon from "../../assets/images/icon-cross.svg";

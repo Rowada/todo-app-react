@@ -19,6 +19,19 @@ export default {
         other: "var(--other)",
         hover: "var(--hover)",
       },
+
+      spacing: {
+        750: "750px",
+        550: "650px",
+      },
+
+      margin: {
+        headm: "-180px",
+      },
+
+      letterSpacing: {
+        hightWidest: ".80rem",
+      },
     },
   },
   plugins: [],

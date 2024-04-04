@@ -1,4 +1,5 @@
-import React from "react";
+// @ts-nocheck
+/* eslint-disable react/prop-types */
 
 const TodoFilter = ({ filter, setFilter }) => {
   return (

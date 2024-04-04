@@ -1,4 +1,5 @@
-import React from "react";
+// @ts-nocheck
+
 import useStore from "../../store";
 
 export const TodoClearButton = () => {

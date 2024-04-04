@@ -1,5 +1,5 @@
 // @ts-nocheck
-import React from "react";
+
 import headerDark from "../../src/assets/images/bg-desktop-dark.jpg";
 import headerLight from "../../src/assets/images/bg-desktop-light.jpg";
 
