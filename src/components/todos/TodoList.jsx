@@ -1,5 +1,5 @@
 // @ts-nocheck
-
+import { useDragAndDrop } from "@formkit/drag-and-drop/react";
 import useStore from "../../store";
 import ToggleTheme from "../toggleTheme/ToggleTheme";
 import { useState, useEffect } from "react";
@@ -14,6 +14,7 @@ export const TodoList = () => {
   const { todos, addTodo } = useStore((state) => state);
   const [filter, setFilter] = useState("all");
   const [width, setWidth] = useState(window.innerWidth);
+  // const [parentRef, values] = useDragAndDrop(todos);
 
   useEffect(() => {
     const handleResize = () => {
@@ -87,7 +88,7 @@ export const TodoList = () => {
 
       {/* debut */}
 
-      <div>
+      {/* <div>
         {filteredTodos.length === 0 ? (
           <div className="w-full bg-background rounded-t flex flex-col items-center justify-center">
             <img
@@ -99,7 +100,7 @@ export const TodoList = () => {
             <p className="text-xl md:text-2xl text-text pb-5">No todos yet</p>
           </div>
         ) : (
-          <div className="w-full bg-background rounded-t">
+          <div ref={parentRef} className="w-full bg-background rounded-t">
             <TransitionGroup component={null}>
               {filteredTodos.map((todo) => (
                 <CSSTransition key={todo.id} timeout={500} classNames="item">
@@ -114,9 +115,9 @@ export const TodoList = () => {
             </TransitionGroup>
           </div>
         )}
-      </div>
+      </div> */}
 
-      {/* <div>
+      <div>
         {filteredTodos.length === 0 ? (
           <div className="w-full bg-background rounded-t flex flex-col items-center justify-center">
             <img
@@ -141,7 +142,7 @@ export const TodoList = () => {
             })}
           </ul>
         )}
-      </div> */}
+      </div>
 
       {/* fin */}
 
