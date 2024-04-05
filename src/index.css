@@ -8,7 +8,7 @@
 }
 
 body {
-  @apply font-body bg-body;
+  @apply font-body bg-body transition-colors;
 }
 
 .light {
@@ -28,4 +28,26 @@ body {
   --accent: hsl(233, 14%, 35%);
   --other: hsl(237, 14%, 26%);
   --hover: hsl(236, 33%, 92%);
+}
+
+.item-enter {
+  opacity: 0;
+  transform: translateX(30px);
+}
+
+.item-enter-active {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.item-exit {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.item-exit-active {
+  opacity: 0;
+  transform: translateX(-30px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
 }

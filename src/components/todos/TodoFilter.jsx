@@ -7,7 +7,7 @@ const TodoFilter = ({ filter, setFilter }) => {
       <button
         className={`focus-outline:none ${
           filter === "all" ? "text-primary" : "text-secondary"
-        } hover:text-text`}
+        } transition-colors hover:text-text`}
         onClick={() => setFilter("all")}
       >
         All
@@ -15,7 +15,7 @@ const TodoFilter = ({ filter, setFilter }) => {
       <button
         className={`focus-outline:none ${
           filter === "active" ? "text-primary" : "text-secondary"
-        } hover:text-text`}
+        } transition-colors hover:text-text`}
         onClick={() => setFilter("active")}
       >
         Active
@@ -23,7 +23,7 @@ const TodoFilter = ({ filter, setFilter }) => {
       <button
         className={`focus-outline:none ${
           filter === "completed" ? "text-primary" : "text-secondary"
-        } hover:text-text`}
+        } transition-colors hover:text-text`}
         onClick={() => setFilter("completed")}
       >
         Completed

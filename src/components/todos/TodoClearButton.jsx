@@ -12,7 +12,7 @@ export const TodoClearButton = () => {
   return (
     <button
       onClick={handleClick}
-      className="focus-outline:none hover:text-text"
+      className="focus-outline:none transition-colors hover:text-text"
     >
       Clear Completed
     </button>

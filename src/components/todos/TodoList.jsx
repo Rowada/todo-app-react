@@ -3,6 +3,7 @@
 import useStore from "../../store";
 import ToggleTheme from "../toggleTheme/ToggleTheme";
 import { useState, useEffect } from "react";
+import { CSSTransition, TransitionGroup } from "react-transition-group";
 import { TodoItem } from "./TodoItem";
 import TodoFilter from "./TodoFilter";
 import emptyTodos from "../../assets/images/empty-todos.svg";
@@ -83,7 +84,39 @@ export const TodoList = () => {
           </div>
         </div>
       </form>
+
+      {/* debut */}
+
       <div>
+        {filteredTodos.length === 0 ? (
+          <div className="w-full bg-background rounded-t flex flex-col items-center justify-center">
+            <img
+              className="w-52 sm:w-80 lg:w-96 py-5 h-auto object-cover"
+              src={emptyTodos}
+              alt="image empty todos"
+            />
+
+            <p className="text-xl md:text-2xl text-text pb-5">No todos yet</p>
+          </div>
+        ) : (
+          <div className="w-full bg-background rounded-t">
+            <TransitionGroup component={null}>
+              {filteredTodos.map((todo) => (
+                <CSSTransition key={todo.id} timeout={500} classNames="item">
+                  <div
+                    key={todo.id}
+                    className="w-full py-4 md:py-5 ps-4 border-b border-accent text-text flex items-center justify-between "
+                  >
+                    <TodoItem todo={todo} id={todo.id} />
+                  </div>
+                </CSSTransition>
+              ))}
+            </TransitionGroup>
+          </div>
+        )}
+      </div>
+
+      {/* <div>
         {filteredTodos.length === 0 ? (
           <div className="w-full bg-background rounded-t flex flex-col items-center justify-center">
             <img
@@ -108,7 +141,9 @@ export const TodoList = () => {
             })}
           </ul>
         )}
-      </div>
+      </div> */}
+
+      {/* fin */}
 
       {width < 765 ? (
         <>
