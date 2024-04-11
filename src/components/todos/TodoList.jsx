@@ -1,5 +1,4 @@
 // @ts-nocheck
-
 import useStore from "../../store";
 import ToggleTheme from "../toggleTheme/ToggleTheme";
 import { useState, useEffect } from "react";
@@ -8,6 +7,7 @@ import { TodoItem } from "./TodoItem";
 import TodoFilter from "./TodoFilter";
 import emptyTodos from "../../assets/images/empty-todos.svg";
 import { TodoClearButton } from "./TodoClearButton";
+import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 
 export const TodoList = () => {
   const [newTodo, setNewTodo] = useState("");
@@ -53,6 +53,17 @@ export const TodoList = () => {
     setNewTodo("");
   };
 
+  const handleDragEnd = (result) => {
+    if (!result.destination) return;
+
+    const items = Array.from(filteredTodos);
+    const [reorderedItem] = items.splice(result.source.index, 1);
+    items.splice(result.destination.index, 0, reorderedItem);
+
+    useStore.setState({ todos: items });
+    localStorage.setItem("todos", JSON.stringify(items));
+  };
+
   return (
     <section className="w-full m-auto px-8 relative mt-headm sm:max-w-550 lg:max-w-750">
       <div className="w-full flex items-center justify-between">
@@ -85,7 +96,7 @@ export const TodoList = () => {
         </div>
       </form>
 
-      <div>
+      <DragDropContext onDragEnd={handleDragEnd}>
         {filteredTodos.length === 0 ? (
           <div className="w-full bg-background rounded-t flex flex-col items-center justify-center">
             <img
@@ -93,26 +104,52 @@ export const TodoList = () => {
               src={emptyTodos}
               alt="image empty todos"
             />
-
             <p className="text-xl md:text-2xl text-text pb-5">No todos yet</p>
           </div>
         ) : (
-          <div className="w-full bg-background rounded-t">
-            <TransitionGroup component={null}>
-              {filteredTodos.map((todo) => (
-                <CSSTransition key={todo.id} timeout={500} classNames="item">
-                  <div
-                    key={todo.id}
-                    className="w-full py-4 md:py-5 ps-4 border-b border-accent text-text flex items-center justify-between "
-                  >
-                    <TodoItem todo={todo} id={todo.id} />
-                  </div>
-                </CSSTransition>
-              ))}
-            </TransitionGroup>
-          </div>
+          <Droppable droppableId="todos">
+            {(provided) => (
+              <div
+                {...provided.droppableProps}
+                ref={provided.innerRef}
+                className="w-full bg-background rounded-t"
+              >
+                <TransitionGroup component={null}>
+                  {filteredTodos.map((todo, index) => (
+                    <CSSTransition
+                      key={todo.id}
+                      timeout={500}
+                      classNames="item"
+                    >
+                      <Draggable
+                        key={todo.id}
+                        draggableId={`todo-${index}`}
+                        index={index}
+                      >
+                        {(provided) => (
+                          <div
+                            ref={provided.innerRef}
+                            {...provided.draggableProps}
+                            {...provided.dragHandleProps}
+                          >
+                            <div
+                              key={todo.id}
+                              className="w-full py-4 md:py-5 ps-4 border-b border-accent text-text flex items-center justify-between "
+                            >
+                              <TodoItem todo={todo} id={todo.id} />
+                            </div>
+                          </div>
+                        )}
+                      </Draggable>
+                    </CSSTransition>
+                  ))}
+                </TransitionGroup>
+                {provided.placeholder}{" "}
+              </div>
+            )}
+          </Droppable>
         )}
-      </div>
+      </DragDropContext>
 
       {width < 765 ? (
         <>
