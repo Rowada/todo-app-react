@@ -1,5 +1,5 @@
 // @ts-nocheck
-import { useDragAndDrop } from "@formkit/drag-and-drop/react";
+
 import useStore from "../../store";
 import ToggleTheme from "../toggleTheme/ToggleTheme";
 import { useState, useEffect } from "react";
@@ -14,7 +14,6 @@ export const TodoList = () => {
   const { todos, addTodo } = useStore((state) => state);
   const [filter, setFilter] = useState("all");
   const [width, setWidth] = useState(window.innerWidth);
-  // const [parentRef, values] = useDragAndDrop(todos);
 
   useEffect(() => {
     const handleResize = () => {
@@ -86,9 +85,7 @@ export const TodoList = () => {
         </div>
       </form>
 
-      {/* debut */}
-
-      {/* <div>
+      <div>
         {filteredTodos.length === 0 ? (
           <div className="w-full bg-background rounded-t flex flex-col items-center justify-center">
             <img
@@ -100,7 +97,7 @@ export const TodoList = () => {
             <p className="text-xl md:text-2xl text-text pb-5">No todos yet</p>
           </div>
         ) : (
-          <div ref={parentRef} className="w-full bg-background rounded-t">
+          <div className="w-full bg-background rounded-t">
             <TransitionGroup component={null}>
               {filteredTodos.map((todo) => (
                 <CSSTransition key={todo.id} timeout={500} classNames="item">
@@ -115,36 +112,7 @@ export const TodoList = () => {
             </TransitionGroup>
           </div>
         )}
-      </div> */}
-
-      <div>
-        {filteredTodos.length === 0 ? (
-          <div className="w-full bg-background rounded-t flex flex-col items-center justify-center">
-            <img
-              className="w-52 sm:w-80 lg:w-96 py-5 h-auto object-cover"
-              src={emptyTodos}
-              alt="image empty todos"
-            />
-
-            <p className="text-xl md:text-2xl text-text pb-5">No todos yet</p>
-          </div>
-        ) : (
-          <ul className="bg-background rounded-t">
-            {filteredTodos.map((todo) => {
-              return (
-                <div
-                  key={todo.id}
-                  className="w-full py-4 md:py-5 ps-4 border-b border-accent text-text flex items-center justify-between "
-                >
-                  <TodoItem todo={todo} id={todo.id} />
-                </div>
-              );
-            })}
-          </ul>
-        )}
       </div>
-
-      {/* fin */}
 
       {width < 765 ? (
         <>
