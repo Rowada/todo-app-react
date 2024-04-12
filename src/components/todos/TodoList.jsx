@@ -123,7 +123,7 @@ export const TodoList = () => {
                     >
                       <Draggable
                         key={todo.id}
-                        draggableId={`todo-${index}`}
+                        draggableId={todo.id}
                         index={index}
                       >
                         {(provided) => (
