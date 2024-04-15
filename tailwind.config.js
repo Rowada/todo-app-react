@@ -20,6 +20,10 @@ export default {
         hover: "var(--hover)",
       },
 
+      backgroundImage: {
+        check: "url('/src/assets/images/icon-check.svg')",
+      },
+
       spacing: {
         750: "750px",
         550: "650px",
