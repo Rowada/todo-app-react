@@ -43,8 +43,8 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- [Solution](https://www.frontendmentor.io/solutions/todo-app-react-Vu1Vheqvbh)
+- [Live Site](https://ftm-todo-app.vercel.app/)
 
 ## My process
 

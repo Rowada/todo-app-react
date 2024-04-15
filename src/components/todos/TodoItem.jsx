@@ -2,7 +2,6 @@
 // @ts-nocheck
 import useStore from "../../store";
 import deleteIcon from "../../assets/images/icon-cross.svg";
-import checkIcon from "../../assets/images/icon-check.svg";
 
 export const TodoItem = ({ todo, id }) => {
   const { toggleTodo, removeTodo } = useStore();
